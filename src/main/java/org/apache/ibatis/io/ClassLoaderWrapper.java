@@ -103,9 +103,9 @@ public class ClassLoaderWrapper {
 
   /**
    * Try to get a resource from a group of classloaders
-   *
-   * @param resource    - the resource to get
-   * @param classLoader - the classloaders to examine
+   * 尝试通过类加载器 去获取资源
+   * @param resource    - the resource to get 配置文件名
+   * @param classLoader - the classloaders to examine 类加载器数组
    * @return the resource or null
    */
   InputStream getResourceAsStream(String resource, ClassLoader[] classLoader) {
@@ -113,8 +113,10 @@ public class ClassLoaderWrapper {
       if (null != cl) {
 
         // try to find the resource as passed
+        //尝试获取资源流
         InputStream returnValue = cl.getResourceAsStream(resource);
 
+        //如果没有获取到,有些类加载器加载路径需要加/
         // now, some class loaders want this leading "/", so we'll add it and try again if we didn't find the resource
         if (null == returnValue) {
           returnValue = cl.getResourceAsStream("/" + resource);
@@ -197,6 +199,15 @@ public class ClassLoaderWrapper {
 
   }
 
+  /**
+   * 0
+   * 1
+   * 2 当前线程类加载器
+   * 3
+   * 4
+   * @param classLoader
+   * @return
+   */
   ClassLoader[] getClassLoaders(ClassLoader classLoader) {
     return new ClassLoader[]{
         classLoader,

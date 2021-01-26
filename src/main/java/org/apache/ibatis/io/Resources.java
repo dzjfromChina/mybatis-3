@@ -91,8 +91,8 @@ public class Resources {
 
   /**
    * Returns a resource on the classpath as a Stream object
-   *
-   * @param resource The resource to find
+   * 获取配置文件 并且返回流
+   * @param resource The resource to find 资源名文件名字
    * @return The resource
    * @throws java.io.IOException If the resource cannot be found or read
    */
@@ -102,9 +102,9 @@ public class Resources {
 
   /**
    * Returns a resource on the classpath as a Stream object
-   *
+   * 获取配置文件 并且返回流
    * @param loader   The classloader used to fetch the resource
-   * @param resource The resource to find
+   * @param resource The resource to find 资源名文件名字
    * @return The resource
    * @throws java.io.IOException If the resource cannot be found or read
    */
